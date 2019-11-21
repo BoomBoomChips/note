@@ -1,0 +1,21 @@
+public class arrayDemo
+{
+	public static void main(String args[]){
+		
+	int data[]=new int[3];               //定义一个长度为3的整型数组
+
+	data[0]=10;                          //为数组赋值
+	data[1]=20;
+	data[2]=30;
+
+	int temp[]=data;                     //数组的引用传递，同类型的数组 数组名[]=数组；
+
+	System.out.println(data.length);         //输出数组的长度
+
+	for(int x=0;x<data.length;x++){          //输出所有的数组数据
+		System.out.println(data[x]);
+	}
+	temp[0]=99;                          //引用传递就是，同一个堆内存可以被多个栈内存所指向
+
+	}
+}

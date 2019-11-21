@@ -1,0 +1,20 @@
+public class arrayDemo
+{
+	public static void main(String args[]){
+		
+	int data[]=new int[]{1,2,3};               //定义一个长度为3的整型数组并赋予1，2，3
+	change(data);                              //调用change方法，相当于int temp[]=data;              注意
+	for (int x=0;x<data.length ;x++ )          //利用for循环输出data数组的值
+	{
+		System.out.println(data[x]);
+	}
+	
+	}
+
+	public static void change(int temp[]){       //定义一个方法，专供数组使用
+		for (int x=0;x<temp.length ;x++ )        //数组值的翻倍方法
+		{
+			temp[x]*=2;
+		}
+	}
+}

@@ -1,0 +1,19 @@
+class A
+{
+	String info="Hello";
+}
+class B extends A
+{
+	int info=100;	//名称相同	//注意：没有封装
+	public void print(){
+		System.out.println(super.info);
+		System.out.println(this.info);
+	}
+}
+public class Hello
+{
+	public static void main(String args[]){
+		B b=new B();
+		b.print();
+	}
+}

@@ -1,0 +1,19 @@
+class Link   //链表类，外部类
+{
+	//内部类，定义在内部是为了链表的服务,加上private是为了他只被一个外部类所服务
+	private class Node		//定义的节点类	
+	{
+		private String data;
+		private Node next;
+		private Node(String data){
+			this.data=data;
+		}
+	}
+	private Node root;		//根节点
+}
+public class LinkDemo
+{
+	public static void main(String args[]){
+		
+	}
+}

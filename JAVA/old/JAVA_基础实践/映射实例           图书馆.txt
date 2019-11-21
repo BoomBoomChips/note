@@ -1,0 +1,90 @@
+//图书馆
+//一个图书馆馆长，两个图书馆副馆长，底下有3名员工
+class Leader
+{//领导的基本信息
+	private int leadnum;
+	private String leadname;
+	private String leadclerk;
+	private double leaddept;
+	private Worker[] worker;
+	//setter,getter暂时省略
+	//现在设置映射关系
+	//一个图书馆馆长手下有多名员工
+	//管理阶层内部的关系设置
+	public void setWorker(Worker[] worker){
+		this.worker=worker;
+	}
+	public Worker[] getWorker(){
+		return this.worker;
+	}
+	//因为副馆长也是管理阶层，所以在设置
+	private Leader[] lowerleader;
+	public void setlowerLeader(Leader[] lowerleader){
+		this.lowerleader=lowerleader;
+	}
+	public Leader[] getlowerLeader(){
+		return this.lowerleader;
+	}
+	//构造，初始化
+	public Leader(int leadnum,String leadname,String leadclerk,double leaddept){
+		this.leadnum=leadnum;
+		this.leadname=leadname;
+		this.leadclerk=leadclerk;
+		this.leaddept=leaddept;
+	}
+	//获得领导的基本信息
+	public String getInfo(){
+		return "领导工号："+this.leadnum+" ，名称："+this.leadname+" ，职位："+this.leadclerk+" ,工资："+this.leaddept;
+	} 
+}
+//员工的基本信息
+class Worker
+{
+	private int worknum;
+	private String workname;
+	private String workclerk;
+	private double workdept;
+	private Leader leader;
+	//setter,getter暂时省略
+	//设置员工的映射关系
+	//一名员工头上有一个副馆长
+	public void setLeader(Leader leader){
+		this.leader=leader;
+	}
+	public Leader getLeader(){
+		return this.leader;
+	}
+	//构造，初始化
+	public Worker(int worknum,String workname,String workclerk,double workdept){
+		this.worknum=worknum;
+		this.workname=workname;
+		this.workclerk=workclerk;
+		this.workdept=workdept;
+	}
+	//获得员工的基本信息
+	public String getInfo(){
+		return "员工编号："+this.worknum+" ，名称："+this.workname+" ，职位："+this.workclerk+" ,工资："+this.workdept;
+	}
+}
+public class TestDemo 
+{
+	public static void main(String args[]){
+		Leader lea1=new Leader(1,"Dawei","馆 长",5000.0);
+		Leader lea2=new Leader(2,"Venus","副 馆 长",3500.0);
+		Leader lea3=new Leader(3,"Yilisebai","副 馆 长",3500.0);
+		Worker worker1=new Worker(4,"小敏","员 工",2000.0);
+		Worker worker2=new Worker(5,"小宁","员 工",2000.0);
+		Worker worker3=new Worker(6,"小王","员 工",2000.0);
+		//设置馆长和领导关系
+		lea1.setlowerLeader(new Leader[]{lea2,lea3});//设置并静态初始化数组
+		//领导和副馆长关系
+		worker1.setLeader(lea2);
+		worker2.setLeader(lea2);
+		worker3.setLeader(lea3);
+		//输出雇员即其对应领导的信息
+		System.out.println(worker1.getInfo());
+		System.out.println(worker2.getInfo());
+		System.out.println(worker3.getInfo());
+
+	}
+}

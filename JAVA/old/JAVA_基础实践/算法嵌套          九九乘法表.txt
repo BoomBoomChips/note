@@ -1,0 +1,20 @@
+public class Hello
+{
+	public static void main(String args[])
+	{
+	
+					//x为行的控制，y为列的控制 1x1=1
+		int x=1;
+		while(x<=9)
+		{
+			for(int y=1;y<=x;y++)
+			{
+				System.out.print(x+"x"+y+"*="+x*y+" ");
+					
+			}
+			System.out.println();
+			x++;
+		}
+
+	}
+	}

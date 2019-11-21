@@ -1,0 +1,38 @@
+class Node   //定义节点类
+{
+	private String Data;  //要保存的数据
+	private Node next;    //连接下一个节点的指针
+	public Node(String Data){
+		this.Data=Data;
+	} 
+	public void setNext(Node next){  //每一个相应的Node必须保存有相应的数据
+		this.next=next;
+	}
+	public String getData(){
+		return this.Data;
+	}
+	public Node getNext(){
+		return this.next;
+	}
+}
+public class LinkDemo
+{
+	public static void main(String args[]){
+		Node head=new Node("头结点");
+		Node n1=new Node("第一个节点");
+		Node n2=new Node("第二个节点");
+		Node n3=new Node("第三个节点");
+		head.setNext(n1);
+		n1.setNext(n2);
+		n2.setNext(n3);
+		//从头结点开始读取
+		Node currentNode=head;    //该句话的意思是将头结点的地址赋给currentNode
+		System.out.println(currentNode);
+	while (currentNode !=null)
+	{	//从当前节点读取数据
+		System.out.println(currentNode.getData());
+		//将下一个节点设置为当前节点
+		currentNode=currentNode.getNext();
+	}
+	}
+}

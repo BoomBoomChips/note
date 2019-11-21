@@ -1,0 +1,108 @@
+//确定关系：  一对多，一本书有一个书类，一个类的书有多本
+          //1、第一步，设置基本关系
+class Book
+{
+	private int bno;
+	private String bname;
+    private double bprice;
+	Book(int bno,String bname,double bprice){
+		this.bno=bno;
+		this.bname=bname;
+		this.bprice=bprice;
+	}
+	     //setter、getter方法
+	void setbno(int bno){
+		this.bno=bno;
+	}
+	void setbno(String bname){
+		this.bname=bname;
+	}
+	void setbno(double bprice){
+		this.bprice=bprice;
+	}
+	int getbno(){
+		return this.bno;
+	}
+	String getbname(){
+		return this.bname;
+	}
+	double getbprice(){
+		return this.bprice;
+	}
+          //print函数
+	String getInfo(){
+		return "|-编号："+this.bno+"  书名："+this.bname+" 价格："+this.bprice+"属于  ："+this.type.gettname();
+	}
+
+          //2、第二步，设置关系函数
+
+	private Type type;
+
+	void setType(Type type){
+		this.type=type;
+	}
+	Type getType(){
+		return this.type;
+	}
+}
+
+class Type
+{
+	private int tno;
+	private String tname;
+	
+	Type(int tno,String tname){
+		this.tno=tno;
+		this.tname=tname;
+	} 
+
+	      //setter,getter
+	void settno(int tno){
+		this.tno=tno;
+	}
+	void settname(){
+		this.tname=tname;
+	}
+	int gettno(){
+		return this.tno;
+	}
+	String gettname(){
+		return this.tname;
+	}
+	String getInfo(){
+		return "类编号："+this.tno+"  该图书属于："+this.tname;
+	}
+
+          //第二步，设置关系函数
+	private Book[] book;
+
+	void setBook(Book[] book){
+		this.book=book;
+	}
+	Book[] getBook(){
+		return this.book;
+	}
+}
+public class BookDemo
+{
+	public static void main(String args[]){
+          //2、第二步，设置数据
+		  Type ty1=new Type(9001,"教科书");
+		  Book bk1=new Book(1,"数学",12.5);
+		  Book bk2=new Book(2,"语文",13.5);
+		  Book bk3=new Book(3,"英语",22.5);
+		  //3、第三步，设置关系
+		  bk1.setType(ty1);
+		  bk2.setType(ty1);
+		  bk3.setType(ty1);
+		  ty1.setBook(new Book[] {bk1,bk2,bk3});
+		  //3、第四步，取出数据
+		  System.out.println(bk1.getInfo());
+		  System.out.println(bk2.getInfo());
+		  System.out.println(bk3.getInfo());
+		  System.out.println(bk1.getType().getInfo());
+		  System.out.println(bk2.getType().getInfo());
+		  System.out.println(bk3.getType().getInfo());
+
+	}
+}

@@ -1,0 +1,33 @@
+//现在编写一个冒泡排序法
+public class arrayDemo 
+{
+	public static void main(String args[])
+	{
+		int data[]=new int[]{1,3,4,9,8,7,5,6,2};
+		sort(data);
+		printinfo(data);
+	}
+
+	public static void sort(int temp[]){                //现在定义的是排序的主方法
+		for (int x=0;x<temp.length ;x++ )               //控制外循环，数组冒泡排序的次数一定不会超过数组的长度*长度,总体的次数
+		{
+			for (int y=0;y<temp.length-1 ;y++ )           //内部循环,减一是为了防止空指向异常。即一直+1，最后会导致空指向异常，内部的次数
+			{
+				if (temp[y]>temp[y+1])
+				{
+				int t=temp[y+1];                        //实现数值的交换
+				temp[y+1]=temp[y];
+				temp[y]=t;
+				}
+				
+			}
+		}
+	}
+	
+	public static void printinfo(int temp[]) {
+		for (int x=0;x<temp.length ;x++ )               //这里是不用加一的，这里只是输出数组的值
+		{
+			System.out.print(temp[x]);
+		}
+	}
+}

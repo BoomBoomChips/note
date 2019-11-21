@@ -1,0 +1,18 @@
+//数组排序方法
+public class arrayDemo 
+{
+	public static void main(String args[])
+	{
+		int data[]=new int[]{6,9,8,4,2,5,7,1};          //静态初始化一个数组
+		java.util.Arrays.sort(data);                    //排序方法
+        printinfo(data);                               
+	}
+
+	
+	public static void printinfo(int temp[]) {
+		for (int x=0;x<temp.length ;x++ )               //这里是不用加一的，这里只是输出数组的值
+		{
+			System.out.print(temp[x]);
+		}
+	}
+}

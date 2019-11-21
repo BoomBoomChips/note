@@ -1,0 +1,13 @@
+public class arrayDemo
+{
+	public static void main(String args[]){
+		
+	int data[]=new int[3];               //定义一个长度为3的整型数组
+	
+	System.out.println(data.length);         //输出数组的长度
+
+	for(int x=0;x<data.length;x++){          //输出所有的数组数据
+		System.out.println(data[x]);
+	}
+}
+}

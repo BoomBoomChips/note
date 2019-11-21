@@ -1,0 +1,41 @@
+//二维数组的转置
+public class arrayDemo 
+{
+	public static void main(String args[])
+	{
+		int data[][]=new int[][]{{1,2,3},{4,5,6},{7,8,9}};          //静态初始化一个数组
+		System.out.println(data.length);                            //计算数组的长度
+		turn(data);
+	        printinfo(data);                               
+	}
+
+	public static void turn(int temp[][]){                          //数组转置的方法
+		for (int x=0;x<temp.length ;x++ )                           //控制x的值，即行
+		{
+			for (int y=0;y<x ;y++ )                                 //控制y的值，即列
+			{
+				if (x==y)                                           //转置是因为x的行和列相同时才会转置
+				{
+					int t=temp[x][y];
+					temp[y][x]=temp[x][y];
+					temp[x][y]=t;
+				}
+			}
+		}
+	}
+
+	
+	public static void printinfo(int temp[][]) {
+		for (int x=0;x<temp.length;x++ ){
+			for (int y=0;y<temp.length ;y++ )          
+		{
+			System.out.print(temp[x][y]);
+		}
+		System.out.println();
+
+		}
+			}
+}
+//[0,0]   [1,0]  [2,0]
+//[0,1]   [1,1]  [2,1]
+//[0,2]   [1,2]  [2,2]

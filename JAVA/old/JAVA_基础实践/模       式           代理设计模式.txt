@@ -1,0 +1,39 @@
+interface Subject	//整个操作的核心主题
+{
+	public void make();	//核心主题的核心功能
+}
+class RealSubject implements Subject	//定义了一个主题类
+{
+	public void make(){
+		System.out.println("吃东西");
+	}
+}
+class ProxySubject implements Subject	
+	//虽说是代理主题类，但是他依旧是子类，一样需要覆写方法
+{
+	private Subject subject;
+	//要接收一个真实主题的操作对象
+	public ProxySubject(Subject subject){
+		this.subject=subject;
+	}
+	public void prepare(){
+		System.out.println("为主题类的核心操作做准备");
+	}
+	public void make(){
+		this.prepare();
+		//通过这里调用了主题类的功能，虽说是覆写了主题类的函数功能，但依旧完成了调用
+		//向上转型，覆写之后的函数功能为子类中的功能。
+		this.subject.make();		
+		this.destory();
+}
+	public void destory(){
+		System.out.println("做最后的结束工作");
+	}
+}
+public class TestDemo
+{
+	public static void main(String args[]){           
+		Subject sub=new ProxySubject(new RealSubject());
+		sub.make();
+	}
+}

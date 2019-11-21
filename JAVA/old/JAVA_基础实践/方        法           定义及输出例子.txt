@@ -1,0 +1,14 @@
+public class Hello
+{
+	public static void main (String args[]){
+	int result=add(3,4);
+	//直接将返回值输出
+	System.out.println(add(3,4));
+	//间接输出成绩
+	System.out.println("计算的级果："+result);
+	}
+	public static int add(int x,int y){
+	return x+y;
+
+	}
+}

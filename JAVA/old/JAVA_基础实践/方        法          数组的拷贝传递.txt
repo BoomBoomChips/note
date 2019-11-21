@@ -1,0 +1,20 @@
+//数组拷贝方法初体验
+public class arrayDemo 
+{
+	public static void main(String args[])
+	{
+		int dataA[]=new int[]{1,2,3,4,5,6,7,8};
+		int dataB[]=new int[]{11,22,33,44,55,66,77,88}; //静态初始化数组
+		System.arraycopy(dataA,4,dataB,1,3);            //数组拷贝函数，
+		                                                //格式为：System.arratcopy(源数组，源数组开始的索引，目标数组，目标数组开始的索引，长度)
+        printinfo(dataB);                               //pay attention:数组开始的索引是0；
+	}
+
+	
+	public static void printinfo(int temp[]) {
+		for (int x=0;x<temp.length ;x++ )               //这里是不用加一的，这里只是输出数组的值
+		{
+			System.out.print(temp[x]);
+		}
+	}
+}

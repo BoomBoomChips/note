@@ -1,0 +1,51 @@
+//一个人有一辆车，一辆车属于一个人
+class Member
+{
+	private int mid;   //人员编号
+	private String name;  //人员名称
+	//car有实例化对象表示有车
+	//car为null表示没有车
+	private Car car;
+	//表示属于人的车
+	public Member(int mid.,String name){
+		this.mid=mid;
+		this.name=name;
+	}
+	public String getInfo(){
+		return "人员编号"+this.mid+"人员名称"+this.name;
+	}
+	public void setCar(Car car){
+		this.car=car;
+	}
+	public Car getCar(){
+		return this.car;
+	}
+}
+class Car 
+{
+	private Member member;//车属于一个人
+	private String pname;
+	public Car(String pname){
+		this.pname=name;
+	}
+	public String getInfo(){
+		return "车的名字"+this.name;
+	}
+	public void setMember(Member member){
+		this.member=member;
+	}
+	public Member getMember(){
+		return this.member;
+	}
+}
+public class TestDemo
+{
+	public static void main(String args[]){
+		Member m=new Member(1,"my");
+		Car c=new Car("玛莎拉蒂");
+		m.setCar(c); //一个人有一辆车
+		c.setMember(m);//不设置就是没车
+		System.out.println(m.getCar().getInfo());
+		System.out.println(c.getMember().getInfo());
+	}
+}

@@ -1,0 +1,23 @@
+class A
+{
+	public void fun(){
+		print();
+	}
+	private void print(){
+	System.out.println("大家下午辛苦了");
+	}
+}
+class B extends A
+{
+	public void print(){	//方法覆写
+		System.out.println("大家下午辛苦了，等下我请大家喝饮料");
+	}
+}
+public class Hello
+{
+	public static void main(String args[]){
+		B b=new B();
+		b.fun();
+	}
+}
+//输出的结果将会是父类中的“大家下午辛苦了”

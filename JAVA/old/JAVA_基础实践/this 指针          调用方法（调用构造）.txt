@@ -1,0 +1,38 @@
+class Book
+{
+	private int number;
+	private String name;
+	private double price;
+	public Book(){
+		this(0,"无名",0.0);                       //调用构造
+	}
+
+	public Book(int number){
+		this(number,"第一类",30.0);               //调用构造，构造只在对象生成的时候调用一次
+	}
+
+	public Book(int number,String name){
+		this(number,"第二类",60.0);
+	}
+	
+	public Book(int number,String name,double price){
+		this.number=number;
+		this.name=name;
+		this.price=price;
+	}
+	public String getinfo(){
+		return "编号："+this.number+" 类型："+this.name+" 价格："+this.price;
+	}
+}
+public class BookDemo
+{
+	public static void main(String args[]){
+	Book book1=new Book(22);
+	Book book2=new Book(33,"八十天环游地球");
+	Book book3=new Book(33,"海底两万里",30.0);
+	System.out.println(book1.getinfo());
+	System.out.println(book2.getinfo());
+	System.out.println(book3.getinfo());
+
+}
+}

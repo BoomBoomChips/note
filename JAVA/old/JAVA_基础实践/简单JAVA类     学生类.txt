@@ -1,0 +1,65 @@
+//定义一个简单的JAVA类
+class student
+{
+	String number;
+	String name;
+	int age;
+	double height;
+	public student(){}
+	public student(String num,String na,int a,double h){
+		number=num;
+		name=na;
+		age=a;
+		height=h;
+	}
+	void setnum(String n)
+	{
+		number=n;
+	}
+	void setname(String n)
+	{
+		name=n;
+	}
+	void setage(int a)
+	{
+		age=a;
+	}
+	void sethigh(double h)
+	{
+	height=h;
+	}
+	String getnumber()
+	{
+		return number;
+	}
+	String getname()
+	{
+		return name;
+	}
+	int getage()
+	{
+	return age;
+	}
+	double getheight()
+	{
+	return height;
+	}
+	void getinfo()
+	{
+		System.out.println(
+		"编号："+number+"\n"+
+		"姓名："+name+"\n"+
+		"年龄："+age+"\n"+
+		"身高："+height+"\n"
+		);
+	}
+}
+public class studentTable
+{
+	public static void main(String args[])
+	{
+		student std1=new student("103","wenjingning",18,170.0);
+		std1.getinfo();
+
+	}
+}

@@ -1,0 +1,173 @@
+class Link   //链表类，外部类
+{
+	//内部类，定义在内部是为了链表的服务,加上private是为了他只被一个外部类所服务
+	private class Node		//定义的节点类	
+	{
+		private Object data;
+		private Node next;
+		private Node(Object data){
+			this.data=data;
+		}
+		public void addNode(Node newNode){
+			if (this.next==null)		//当前的下一个节点为空
+			{
+				this.next=newNode;
+			}else{		//向后继续保存
+				this.next.addNode(newNode);
+			}
+		}
+		//第一次调用是（Link）进行的：this=Link.root
+		//第二次调用一定是Node自己，this=Link.root.next
+		public boolean containsNode(Object data){
+			if(data.equals(this.data)){	//当前节点数据为要查询的数据时
+				return true;	//后面不在查询了
+			}else{		//当前节点数据不满足查询要求
+				if (this.next!=null)
+				{
+					return this.next.containsNode(data);
+				}else{
+					return false;	//没得查了
+				}
+			}
+		}
+		public Object getNode(int index){
+			//使用当前对象的foot内容要查询的索引进行比较
+			//随后将foot的内容自增，目的是为了下次查询方便
+			if (Link.this.foot++==index)
+			{
+				return this.data;	//返回当前节点数据
+			}else{	//现在应该继续向后查询
+				
+					return this.next.getNode(index);		//查询下一个数据
+				
+			}
+		}
+		public void setNode(int index,Object data){
+			if (Link.this.foot++==index)
+			{
+				this.data=data;	//	进行内容数据的修改
+			}else{
+					this.next.setNode(index,data);
+			}
+		}
+		//第一次调用（Link）,previous=Link.root、this=Link.root.next
+		//第二次调用（Node），previous=Link.root.next、this=Link.root.next.next
+		//要传递上一个节点以及要删除的数据
+		public  void removeNode(Node previous,Object data){
+			if (data.equals(this.data))	//当前空节点为要删除节点
+			{					
+				previous.next=this.next;//空出当前节点
+			}else{	//应该向后继续查询
+				this.next.removeNode(this,data);
+			}
+		}
+	//第一次调用(Link):this.root;
+	//第二次调用(Node):this.root.next
+	public void toArrayNode(){
+		Link.this.retArray[Link.this.foot++]=this.data;
+		if (this.next!=null)	//有后续元素
+		{
+			this.next.toArrayNode();
+		}
+	}
+	}
+	/*===============以上为内部类=================*/
+	private Node root;		//根节点
+	private int count=0;	//保存元素的个数
+	private int foot=0;
+	private Object [] retArray;	//返回的对象数组
+	public void add(Object data){//假设不予许有空
+		if(data==null){
+			return;
+		}
+		Node newNode=new Node(data);	//要保存的数据
+		if (this.root==null)		//如果没有根节点
+		{
+			this.root=newNode;	//保存根节点
+		} else{		//根节点存在，其它节点交给Node类处理
+			this.root.addNode(newNode);
+		}
+		this.count++;	//每一次完成保存后数据量加一
+	}
+	public int size(){
+		return this.count;		//返回的就是链表的长度
+	}
+	public boolean isEmpty(){
+		return this.count==0;
+	}
+	public Object get(int index){
+		if (index>this.count)
+		{
+			return null;	//没有数据
+		}
+		this.foot=0;		//表示从前向后查询 
+		return this.root.getNode(index);	//将功能交给Node来完成
+	}
+	public boolean contains(Object data){
+		//表示现在没有要查询的数据，不用短路与是因为都要满足条件
+		if (data==null||this.root==null)
+		{
+			return false;	//没有查询结果
+		}
+		return this.root.containsNode(data);
+	}
+	public void set(int index,Object data){
+		if (index>this.count)
+		{
+			return;		//结束方法调用
+		}
+		this.foot=0;	//重新设置foot属性的内容，作为索引
+		this.root.setNode(index,data);		//交给Node来设置
+	}
+	public Object [] toArray(){
+		if (this.root==null)
+		{
+			return null;
+		}
+		this.foot=0;	//需要脚标控制
+		this.retArray=new Object[this.count];	//为链表长度
+		this.root.toArrayNode();	//交给Node类处理
+		return	this.retArray;
+	}
+	public void remove(Object data) {
+		if (this.contains(data))
+		{
+			//要删除数据是否是根节点的数据
+			//root是Node类的对象，此处直接访问了内部类私有操作
+			if (data.equals(this.root.data))
+			{
+				this.root=this.root.next;	//空出当前根节点
+			}else{		//不是根元素
+				this.root.next.removeNode(this.root,data);
+			}
+			this.count--;
+		}
+	}
+	
+}
+public class LinkDemo
+{
+	public static void main(Object args[]){
+		Link all=new Link();
+		System.out.println("为空链表"+all.isEmpty());
+		all.add("Hello");
+		all.add("World");
+		System.out.println(all.contains("Hello"));
+		System.out.println(all.contains("dd"));
+		Object [] data=all.toArray();
+		for (int x=0;x<data.length ;x++ )
+		{
+			System.out.println(data[x]);
+		}
+		System.out.println(all.get(1));
+		System.out.println(all.get(10));
+		all.add(null);
+		all.set(1,"aaa");
+		System.out.println(all.get(1));
+		System.out.println(all.size());
+		System.out.println("为空链表"+all.isEmpty());
+		all.remove("aaa");
+		System.out.println(all.size());
+		System.out.println(all.get(2));//get（1）不行
+	}
+}

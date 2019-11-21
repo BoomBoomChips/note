@@ -1,0 +1,37 @@
+package cn.test.deom;
+
+class Point<T>{		//定义坐标，Type=T,是一个类型
+	private T x;	//x轴坐标，具体类型动态生成
+	private T y;	//y轴坐标，具体类型动态生成
+	
+	public T getX() {
+		return x;
+	}
+	public void setX(T x) {
+		this.x = x;
+	}
+	public T getY() {
+		return y;
+	}
+	public void setY(T y) {
+		this.y = y;
+	}
+	
+}
+public class TestDemo {
+	
+	public static void main(String[] args) {
+		//设置数据
+		Point<String> p=new Point<String>();
+		p.setX("东经100度");
+		p.setY("南纬20度");
+		//设置数据
+		String X=(String) p.getX();
+		String Y=(String) p.getY();
+		System.out.println("x坐标："+X+",y坐标:"+Y);
+	}
+}
+	
+
+
+	

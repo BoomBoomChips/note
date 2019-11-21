@@ -1,0 +1,28 @@
+class A
+{
+	public void print(){
+		System.out.println("A");
+	}	
+}
+class B extends A
+{
+	public void print(){
+		System.out.println("B");
+	}
+}
+class C extends A
+{
+	public void print(){
+		System.out.println("C");
+	}
+}
+public class Hello
+{
+	public static void main(String args[]){
+		//只要是A类的子类都可以使用向上转型，都可以由A类接受
+		A a1=new B();	//向上转型
+		A a2=new C();	//向上转型
+		a1.print();
+		a2.print();
+	}
+}

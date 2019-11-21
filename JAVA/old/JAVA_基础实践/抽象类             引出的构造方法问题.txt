@@ -1,0 +1,24 @@
+abstract class A
+{
+	public A(){		//2、父类构造方法
+		this.print();	//3、调用print()方法
+	}
+	public abstract void print();
+}
+class B extends A
+{
+	private int num=100;
+	public B(int num){
+		this.num=num;
+	}
+	public void print(){	//4、调用覆写方法
+		//num还没初始化，内容是其构造的初值。
+		System.out.println("num= "+num);
+	}
+}
+public class Hello
+{
+	public static void main(String args[]){
+		new B(30);	//1、执行构造
+	}
+}

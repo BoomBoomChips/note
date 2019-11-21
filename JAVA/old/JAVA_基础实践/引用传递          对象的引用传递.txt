@@ -1,0 +1,28 @@
+//对象的引用传递
+class student
+{
+	String name;
+	int age;
+	double high;
+	public void get(){
+		System.out.println(学生姓名为：+name+  年龄为：+age+  身高为：+high);
+	}
+}
+public class studentTable
+{
+	public static void main(String args[]){
+		student st1=new student();
+		student st2=null;
+		st1.name=xiaoming;
+		st1.age=18;
+		st1.high=170.1;
+		st2=st1;                  //这里就是引用传递，并且注意代码的复制顺序
+		st2.name=bigpig;
+		st2.age=19;
+		st2.high=180.3;
+		st1.get();
+		st2.get();
+	}
+	
+
+}

@@ -1,0 +1,12 @@
+public class Hello
+{
+	public static void main(String args[]){
+		String msg="Hello";
+		fun(msg);  //引用传递
+		System.out.println(msg);
+	}
+	public static void fun(String temp){
+		temp="World";
+	}
+}
+//最后的结果是“Hello”

@@ -1,0 +1,18 @@
+package cn.test.deom;
+
+import java.io.FileInputStream;
+import java.util.Scanner;
+
+public class Hello
+{
+	public static void main(String args[])throws Exception{
+		Scanner scan=new Scanner(new FileInputStream(new file("文件路径")));//准备接受键盘输入数据
+		scan.useDelimiter("\n");  //设置分隔符
+		while(scan.hasNext()) {
+			System.out.println(scan.next());
+		}
+		scan.close();
+	}
+
+}
+ 

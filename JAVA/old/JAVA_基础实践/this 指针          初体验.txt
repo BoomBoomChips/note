@@ -1,0 +1,21 @@
+class Song
+{
+	private String name;
+	private double lon;
+	public Song(String name,double lon){
+		this.name=name;                                    //区别
+		this.lon=lon;
+	}
+	public String getinfo(){
+		return "名字: "+this.name+" 时长："+this.lon;      //区别
+	}
+	//setter,getter省略
+}
+public class Hello
+{
+	public static void main(String args[]){
+
+		Song son1=new Song("一首歌",83.5);
+		System.out.println(son1.getinfo());
+	}
+}

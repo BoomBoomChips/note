@@ -1,0 +1,26 @@
+interface A		//	定义接口
+{
+	public void funA();	//定义接口时候可以不用加上abstract 
+	abstract class B
+	{
+		public abstract void funB();	//但是在抽象类里必须加上
+	}
+}
+class X implements A	//X实现了A接口
+{
+	//这样是没有错误的，接口A中的内部类搁哪里不动，他是不影响的，他是一个独立的class文件
+	public void funA(){	
+		System.out.println("Hello Word");
+	}
+	//若要想使用抽象类B可以定义一个内部抽象类
+	class Y extends B	//内部抽象类的子类
+	{
+		public void funB(){}
+	}
+}
+
+public class Hello
+{
+	public static void main(String args[]){
+	}
+}

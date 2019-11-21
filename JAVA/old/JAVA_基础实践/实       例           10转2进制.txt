@@ -1,0 +1,41 @@
+class Change
+{
+	//设置基本字段
+	private int aim;		//目标
+	private int array[]=new int[100];	//用于储存转换的值
+	private int n;			//计数
+	private int rem;  //余数
+	//构造函数
+	public Change(int aim){
+		this.aim=aim;
+	}
+	//setter、getter省略
+	//自定义功能函数
+	void change(){
+		if (this.aim==0)
+		{
+			System.out.println("转换的值为：0");
+		}
+		while (this.aim>0)
+		{
+			this.rem=this.aim%2;
+			this.aim=this.aim/2;
+			this.array[this.n++]=this.rem;
+		}
+	}
+	void print(){
+		System.out.println("转换的值为：");
+		for (int x=this.n-1;x>=0 ;x-- )
+		{
+			System.out.print(this.array[x]);
+		}
+	}
+}
+public class Hello
+{
+	public static void main(String args[]){
+		Change c=new Change(10);
+		c.change();
+		c.print();
+	}
+}

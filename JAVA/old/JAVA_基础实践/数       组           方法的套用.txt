@@ -1,0 +1,24 @@
+//方法返回数组
+public class arrayDemo 
+{
+	public static void main(String args[])
+	{
+		int data[]=init();                              //接收数组
+		printinfo(data);
+		System.out.println():
+		System.out.println(init().length);
+	}
+
+	public static int[] init() {                          //返回一个匿名数组
+
+	     return new int[]{1,2,3};
+	}
+
+	
+	public static void printinfo(int temp[]) {
+		for (int x=0;x<temp.length ;x++ )               //这里是不用加一的，这里只是输出数组的值
+		{
+			System.out.print(temp[x]);
+		}
+	}
+}

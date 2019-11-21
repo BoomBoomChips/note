@@ -1,0 +1,17 @@
+package cn.test.deom;
+
+import java.util.Scanner;
+
+public class Hello
+{
+	public static void main(String args[])throws Exception{
+		Scanner scan=new Scanner(System.in);//准备接受键盘输入数据
+		System.out.println("请输入内容：");
+		if (scan.hasNext()) {		//判断是否有输入数据
+			System.out.println("输入内容："+scan.next());
+		}
+		scan.close();
+	}
+
+}
+ 
