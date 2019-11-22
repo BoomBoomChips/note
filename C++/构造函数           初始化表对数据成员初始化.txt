@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+class Box                                                                //声明Box类
+{
+public:
+	Box();
+	Box(int h, int w, int len) :height(h), width(w), length(len){}                                                  //声明带参的构造函数
+	int volume();                                                        //声明计算机体积函数
+private:
+	int height;
+	int width;
+	int length;
+};
+int Box::volume()
+{
+	/*cout << "volume:" << height*width*length << endl;*/
+	return (height*width*length);
+}
+int main()
+{
+	Box box1(1,2,3);
+	cout << "volume:" << box1.volume() << endl;
+	return 0;
+}

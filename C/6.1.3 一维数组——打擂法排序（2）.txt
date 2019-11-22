@@ -1,0 +1,14 @@
+#include<stdio.h>
+void main()
+{
+	int i, a[] = { 1,6,2,4,25,6,7,9,12,32,45 }, max, local;
+	printf("本程序为找最大值");
+	max = a[0];                //现为知道数组元素时的情况
+	local = 0;
+		for(i=1;i<=10;i++)
+			if(a[0]<i)
+			{
+				max = a[i]; local = i+1;//加一的原因是:数组中的下标位0开始，但我们平常不说是第0号元素，故+1，容易分辨
+			}
+		printf("最大的值是 %d,是第%d位\n",max,local);
+}

@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+
+int max(int x, int y)                //声明与定义整体  放在上面，放在下面没有影响
+{
+	int z;                      
+	if (x>y)
+	{
+		z = x;
+	}
+	else
+	{
+		z = y;
+	}
+	return(z);
+}
+int main()
+{
+	int a, b, z;
+	int max(int x,int y);          //max要提前声明，系统会根据函数声明的合法性进行检查，如果二者不匹配，编译就会出错。
+	cin >> a >> b;
+	z = max(a, b);
+	cout <<"max="<<z<<endl;       //换行符是字符，不能和函数结果一起输出
+	return 0;
+}

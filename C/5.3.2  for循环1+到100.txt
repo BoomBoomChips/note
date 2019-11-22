@@ -1,0 +1,11 @@
+#include<stdio.h>
+int main()
+{
+	int i,sum;
+	for (i=1,sum=0; i <=100; i++)//sum和i的值必须初始化，要不无法计算，  可在int处，或者for循环里初始化
+	{
+		sum = sum + i;
+	}
+	printf("%d\n", sum);
+	return 0;
+}

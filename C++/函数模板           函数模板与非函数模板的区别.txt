@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+                              //函数模板
+template<typename T>
+T max(T x, T y)                        //函数模板              
+{
+	return x > y ? x : y;
+}
+//int max(int a, int b)                    //非模板函数        
+//{
+//	return a > b ? a : b;
+//}
+//double max(double a, double b)         //非模板函数
+//{
+//	return a > b ? a : b;
+//}
+int main()
+{
+	cout << " max('3', '7') is " << max('3', '7') << endl;                //因为套了模板，所以输出按着模板，自动转化为合适的类型进行输出        
+	return 0;  
+}
+
+
+
+
+
+
+//int max(int a, int b)                     //非模板函数
+//{
+//	return a > b ? a : b;
+//}
+//double max(double a, double b)           //非模板函数
+//{
+//	return a > b ? a : b;
+//}
+//int main()
+// {
+//	cout << " max('3','7') is" << max('3', '7') << endl;     //  因为没套模板，输出就是float型的
+//	return 0;
+//}
+
+

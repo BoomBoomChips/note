@@ -1,0 +1,134 @@
+一  7/8
+#include<iostream>
+using namespace std;
+class B {
+public:
+	B() {  }
+	B(int i, int j)
+	{
+		x = i; y = j;
+	}
+	void printb()
+	{
+		cout << x << ", " << y << endl;
+	}
+private:
+	int x, y;
+};
+class A {
+public:
+	A() {  }
+	A(int i, int j);
+		void printa();
+private:
+	B  c;
+};
+A::A(int i, int j) :c(i, j)
+{  }
+void A::printa()
+{
+	c.printb();
+}
+int main()
+{
+	A  a(7, 8);
+	a.printa();
+	return 0;
+}
+
+
+
+
+
+
+二  disp2
+#include<iostream>
+using namespace std;
+class Sample{
+public:
+	Sample (int i, int j)
+	{x=i, y=j;}
+	void disp()
+	{
+		cout<<"disp1"<<endl;
+	}
+	void disp() const
+	{
+		cout<<"disp2"<<endl;
+	}
+private:
+	int x, y;
+};
+int main()
+{ 
+	const  Sample a(1,2);
+a.disp();
+return 0;
+}
+
+
+
+
+三
+#include<iostream>
+           using namespace std;
+           class Test{
+
+              public:
+                   Test( );
+                   Test(int n);
+               private:
+                    int num;
+              };
+             Test::Test( )
+             { cout<<”Init defa”<<endl;
+                num=0;
+              }
+              Test::Test( int n)
+              { cout<<”Init”<<”  ”<<endl;
+                num=n;
+              }
+             int main( )
+           {  Test  x[3];
+               Test  y(35);
+               return 0;
+           }       
+Init defa
+Init defa
+Init defa
+Init
+
+
+第二大题  
+一小题
+#include<iostream>
+using namespace std;
+class CTest {
+public:
+	CTest()
+	{
+		x = 20;
+	}
+	void use_friend();
+private:
+	int x;
+	friend void friend_f(CTest  fri);
+};
+void friend_f(CTest fri)
+{
+	fri.x = 55;
+}
+void CTest::use_friend()
+{
+	CTest  fri;
+      //this->friend_f(fri);                              非成员函数，this 指针不可访问，直接去掉
+	::friend_f(fri);                                    //作用域符可去可不去，是正常的
+}
+int main()
+{
+	CTest  fri, fri1;
+	/*fri.friend_f(fri);*/                              //非成员函数，不可访问直接去掉fri
+	friend_f(fri);
+	friend_f(fri1);
+	return 0;
+}

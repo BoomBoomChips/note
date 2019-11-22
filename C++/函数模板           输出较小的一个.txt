@@ -1,0 +1,16 @@
+#include<iostream>
+using namespace std;
+template<class T>
+T min(T a, T b)                                          //函数模板的套用——输出较小的      
+{
+	if (a<b) return a;
+	else return b;
+}
+int main()
+{
+	int n1 = 9, n2 = 6;
+	double d1 = 0.5, d2 = 4.8;
+	cout << "较小整数：" << min(n1, n2) << endl;
+	cout << "较小实数：" << min(d1, d2) << endl;
+	return 0;
+}

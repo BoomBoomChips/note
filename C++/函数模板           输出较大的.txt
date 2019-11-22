@@ -1,0 +1,8 @@
+template<typename T>;    //声明T为类型参数
+
+T max(T a, T b, T c)    //定义一个通用函数，用T作虚拟的类型名         后面调用的时候类型参数会被取代
+{
+	if (b > a) a = b;
+	if (c > a) a = c;
+	return a;
+}

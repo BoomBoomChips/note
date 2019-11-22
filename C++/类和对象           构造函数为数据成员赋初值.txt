@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+class Time
+{
+public:
+	Time()                                                          //构造函数为数据赋初值，常与下面的set_time连用，   ：构造函数必须与类同名
+	{
+		hour = 0;                                                   //注意，系统是不会为类分配存储空间的，只会为数据，在定义对象后，才会为其分配存储空间
+		minute = 0;
+		sec = 0;
+	}
+	void set_time();
+	void show_time();
+private:                                                            
+	int hour;
+	int minute;
+	int sec;
+};
+void Time::set_time()
+{
+	cin >> hour;
+	cin >> minute;
+	cin >> sec;
+}
+void Time::show_time()
+{
+	cout << hour << ":" << minute << ":" << sec << endl;
+}
+int main()
+{
+	Time t1;                           //定义t1,t2是为了方便比较数据
+	t1.set_time();
+	t1.show_time();
+	Time t2;
+	t2.show_time();
+	return 0;
+}

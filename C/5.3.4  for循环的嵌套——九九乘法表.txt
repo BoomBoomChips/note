@@ -1,0 +1,15 @@
+#include<stdio.h>
+void main()
+{
+	int i,j,k;
+	for (i=1;i<= 9;i++)
+	{
+		for (j = 1; j <= 9; j++)  //注意花括号一定不能省
+		{
+			k = i*j;
+			printf("%d*%d=%d ", i, j, k);
+		}
+		printf("\n");
+	}
+	
+}

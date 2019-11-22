@@ -1,0 +1,17 @@
+#include<stdio.h>
+void main()
+{
+	int a[10], i, j, max, local;
+	printf("请输入10个不重复的数:\n");//这里的换行符是为了好看
+	for (i = 0; i <10; i++)
+		scanf("%d", &a[i]);
+	max = a[0];
+	local = 0;
+	for (j = 1; j <= 9; j++)
+		if (max<a[j])
+		{
+			max = a[j]; local = j;
+		}                                                 //下面的换行符是为了美观
+	printf("最大值为 %d, 是第%d个元素\n", max, local+1);//地标最低为0，故用+1恢复正常
+
+}

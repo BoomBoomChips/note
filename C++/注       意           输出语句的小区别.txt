@@ -1,0 +1,16 @@
+#include<iostream>
+#include<stdio.h>
+using namespace std;
+void set()
+{
+	printf("this is the c++ program\n");
+	
+}
+int main()
+{
+	cout << "THIS THE C++ PROGRAM.\n";          //c++的输出
+	set();                                      //c的输出
+}
+
+cout 的输出必须要#include<iostream>
+printf的输出要#include<stdio.h>
