@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://www.cnblogs.com/lightsrs/p/7897182.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="origin">
+    <title>CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园</title>
+<meta property="og:description" content="前些天安装了Nginx，为了好玩我就又安装Apache，Apache的安装还算顺利。在此做一下学习记录和经验分享。 一、安装httpd 1、先查看一下系统有没有已经安装了httpd的，如果啥都没查到，">
+    <link type="text/css" rel="stylesheet" href="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/bundle-BlueSky.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/bundle-BlueSky-mobile.css">
+    <link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/lightsrs/rss">
+    <link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/lightsrs/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/lightsrs/wlwmanifest.xml">
+    <script src="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/amp4ads-host-v0.js.下载"></script><script src="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/pubads_impl_rendering_2019032901.js.下载"></script><script async="" src="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/analytics.js.下载"></script><script src="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+    <script>var currentBlogId=388374;var currentBlogApp='lightsrs',cb_enable_mathjax=false;var isLogined=false;</script>
+    <script src="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/blog-common.js.下载" type="text/javascript"></script>
+<link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=www.cnblogs.com" as="script"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=www.cnblogs.com"></script><script src="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/pubads_impl_2019032901.js.下载" async=""></script><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-32/html/container.html"></head>
+<body>
+<a name="top"></a>
+
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="https://www.cnblogs.com/lightsrs/"><img id="blogLogo" src="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="https://www.cnblogs.com/lightsrs/">蜗牛的古董</a></h1>
+<h2>在无边的乱码里摸爬滚打</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/lightsrs/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E8%9C%97%E7%89%9B%E7%9A%84%E5%8F%A4%E8%91%A3">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/lightsrs/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="https://www.cnblogs.com/lightsrs/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 11&nbsp; </span>
+<span id="stats_article_count">文章 - 2&nbsp; </span>
+<span id="stats-comment_count">评论 - 0</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+        <div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/lightsrs/p/7897182.html">CentOS7 Apache的安装配置</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>　　前些天安装了Nginx，为了好玩我就又安装Apache，Apache的安装还算顺利。在此做一下学习记录和经验分享。</p>
+<hr>
+<p>&nbsp;</p>
+<h4>一、安装httpd　　</h4>
+<p>1、先查看一下系统有没有已经安装了httpd的，如果啥都没查到，那就是没安装呗。如果有#rpm -e 查到的rpm报名，进行删除即可。</p>
+<div class="cnblogs_Highlighter sh-gutter">
+<div><div id="highlighter_259862" class="syntaxhighlighter  delphi"><div class="toolbar"><span><a href="https://www.cnblogs.com/lightsrs/p/7897182.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="delphi plain">#rpm -qa | grep httpd</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>2、我这里就直接使用yum安装了（会自动安装依赖包），为了简单方便。</p>
+<div class="cnblogs_Highlighter sh-gutter">
+<div><div id="highlighter_567163" class="syntaxhighlighter  delphi"><div class="toolbar"><span><a href="https://www.cnblogs.com/lightsrs/p/7897182.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="delphi plain">yum -y install httpd</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>3、httpd -v 查看安装版本，安装成功之后，查找配置文件位置，对httpd进行配置</p>
+<div class="cnblogs_Highlighter sh-gutter">
+<div><div id="highlighter_496612" class="syntaxhighlighter  delphi"><div class="toolbar"><span><a href="https://www.cnblogs.com/lightsrs/p/7897182.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="delphi plain">#find / -name "httpd</code><code class="delphi value">.</code><code class="delphi plain">conf"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>&nbsp;4、当然，最好将原有配置文件备份一份如：</p>
+<div class="cnblogs_Highlighter sh-gutter">
+<div><div id="highlighter_457953" class="syntaxhighlighter  delphi"><div class="toolbar"><span><a href="https://www.cnblogs.com/lightsrs/p/7897182.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="delphi plain">#cp&nbsp; /etc/httpd/conf/httpd</code><code class="delphi value">.</code><code class="delphi plain">conf&nbsp;&nbsp; /etc/httpd/conf/httpd</code><code class="delphi value">.</code><code class="delphi plain">conf</code><code class="delphi value">.</code><code class="delphi plain">origin</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<h4>二、配置Apache文件</h4>
+<p>1、特别是要注意这个配置，这是Apache 2.4的一个新的默认值，拒绝所有的请求！</p>
+<p><em id="__mceDel">&lt;Directory /&gt;<br>&nbsp; AllowOverride none<br>&nbsp; &nbsp; Require all denied<br>&lt;/Directory&gt;　　</em></p>
+<p>把none改为ALL, centos里用的是vi或vim进行编辑，在指令模式下输入/要查询的内容，enter，可以进行内容的查找，然后对其进行修改。（vim查找教程：http://jingyan.baidu.com/article/219f4bf793a0c2de442d38f1.html）</p>
+<p>2、配置WEB站点</p>
+<p>如我的网站页面文件为默认的</p>
+<p>Listen 8080<br>&lt;VirtualHost *:8080&gt;<br>        　　DocumentRoot "/var/www/html"<br>        　　ServerName localhost:8080<br>        　　&lt;Directory "/var/www/html"&gt;<br>                　　　　AllowOverride All<br>                　　　　Options FollowSymLinks Includes ExecCGI<br>                　　　　Require all granted<br>        　　&lt;/Directory&gt;<br>&lt;/VirtualHost&gt;</p>
+<p>3、添加防火墙端口</p>
+<p>我这使用的是centos7默认的firewall防火墙，添加8080端口。</p>
+<div class="cnblogs_Highlighter sh-gutter">
+<div><div id="highlighter_15030" class="syntaxhighlighter  delphi"><div class="toolbar"><span><a href="https://www.cnblogs.com/lightsrs/p/7897182.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="delphi plain">#firewall-cmd --permanent --zone=</code><code class="delphi keyword">public</code> <code class="delphi plain">--add-port=</code><code class="delphi value">8080</code><code class="delphi plain">-</code><code class="delphi value">8081</code><code class="delphi plain">/tcp　　--永久添加端口&lt;br&gt;#fire-cmd --permanent --zone=</code><code class="delphi keyword">public</code> <code class="delphi plain">--list-ports　　--查看开启端</code></div></div></td></tr></tbody></table></div></div>
+<pre name="code" class="hljs css">#systemctl restart firewalld.service  //修改配置后需要重启服务使其生效</pre>
+</div>
+<p>当然，如果你使用的云服务器，那么还需要在控制台添加端口支持（我在mysql的安装和配置中有谈到这个问题）</p>
+<p>4、测试</p>
+<p>在自己window的浏览器上输入192.168.x.x:8080/index.html即可解析出在服务器路径中html文件了。</p>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="https://www.cnblogs.com/lightsrs/tag/centos7/">centos7</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(7897182,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;5890ff97-d730-456e-21f9-08d4ef52ecb6&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/lightsrs/" target="_blank"><img src="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/20171016115026.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/lightsrs/">蜗牛的古董</a><br>
+            <a href="http://home.cnblogs.com/u/lightsrs/followees">关注 - 8</a><br>
+            <a href="http://home.cnblogs.com/u/lightsrs/followers">粉丝 - 3</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;5890ff97-d730-456e-21f9-08d4ef52ecb6&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(7897182,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(7897182,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/lightsrs/p/7858526.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/lightsrs/p/7858526.html" title="发布于2017-11-20 23:16">CentOS7 ngnix 的安装和配置</a><br><a href="https://www.cnblogs.com/lightsrs/p/7899676.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/lightsrs/p/7899676.html" title="发布于2017-11-28 21:59">Centos7 PHP的安装和配置</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2017-11-26 00:10</span> <a href="https://www.cnblogs.com/lightsrs/">蜗牛的古董</a> 阅读(<span id="post_view_count">5019</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=7897182" rel="nofollow">编辑</a> <a href="https://www.cnblogs.com/lightsrs/p/7897182.html#" onclick="AddToWz(7897182);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=388374,cb_entryId=7897182,cb_blogApp=currentBlogApp,cb_blogUserGuid='5890ff97-d730-456e-21f9-08d4ef52ecb6',cb_entryCreatedDate='2017/11/26 0:10:00';loadViewCount(cb_entryId);var cb_postType=1;var isMarkdown=false;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/lightsrs/p/7897182.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/lightsrs/p/7897182.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-工控&#39;)">【推荐】超50万C++/C#源码: 大型实时仿真组态图形源码</a><br><a href="https://gitee.com/enterprises?from=bky-2" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-gitee&#39;)">【推荐】专业便捷的企业级代码托管服务 - Gitee 码云</a><br><a href="https://cloud.tencent.com/redirect.php?redirect=1014&amp;cps_key=285f996e1cd76decfb796e3eb6d1723b&amp;from=console" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-腾讯云&#39;)">【推荐】云服务器、云数据库特惠，服务更稳，速度更快，价格更优</a><br><a href="https://www.bagevent.com/event/2468856" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-GAITC&#39;)">【活动】2019第四届全球人工技术大会解码“智能+时代”</a><br></div>
+<div id="opt_under_post"></div>
+<script async="async" src="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/gpt.js.下载"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+<script>
+  googletag.cmd.push(function() {
+        googletag.defineSlot('/1090369/C1', [300, 250], 'div-gpt-ad-1546353474406-0').addService(googletag.pubads());
+        googletag.defineSlot('/1090369/C2', [468, 60], 'div-gpt-ad-1539008685004-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+  });
+</script>
+<div id="cnblogs_c1" class="c_ad_block">
+    <div id="div-gpt-ad-1546353474406-0" style="height:250px; width:300px;" data-google-query-id="COGdqqyW0uECFcotlgoduN8PYA"><div id="google_ads_iframe_/1090369/C1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C1_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C1_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="1" data-load-complete="true" src="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/saved_resource.html"></iframe></div></div>
+</div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>相关博文：</b><br>·  <a href="https://www.cnblogs.com/liaojie970/p/6594350.html" target="_blank" onclick="clickRecomItmem(6594350)">CentOS7安装配置Apache HTTP Server</a><br>·  <a href="https://www.cnblogs.com/cglWorkBook/p/4988032.html" target="_blank" onclick="clickRecomItmem(4988032)">centos7 安装配置apache httpd服务</a><br>·  <a href="https://www.cnblogs.com/kluan/p/4452696.html" target="_blank" onclick="clickRecomItmem(4452696)">CentOS7安装配置Apache HTTP Server</a><br>·  <a href="https://www.cnblogs.com/shabake/p/6784181.html" target="_blank" onclick="clickRecomItmem(6784181)">CentOS7安装配置Apache HTTP Server</a><br>·  <a href="https://www.cnblogs.com/xccnblogs/p/4880897.html" target="_blank" onclick="clickRecomItmem(4880897)">安装apache——centos7</a><br></div></div>
+<div id="cnblogs_c2" class="c_ad_block">
+    <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;" data-google-query-id="COOdqqyW0uECFcotlgoduN8PYA"><div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C2_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C2_0" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="2" data-load-complete="true" src="./CentOS7 Apache的安装配置 - 蜗牛的古董 - 博客园_files/saved_resource(1).html"></iframe></div></div>
+</div>
+<div id="under_post_kb"><div class="itnews c_ad_block"><b>最新新闻</b>：<br> ·  <a href="https://news.cnblogs.com/n/623837/" target="_blank">IBM将关闭新加坡制造工厂 全体裁员</a><br> ·  <a href="https://news.cnblogs.com/n/623836/" target="_blank">苹果今晚大战开打！要求高通赔偿270亿美元</a><br> ·  <a href="https://news.cnblogs.com/n/623833/" target="_blank">UC伯克利教授：人脑几十年内将连接云端，全人类实现知识共享</a><br> ·  <a href="https://news.cnblogs.com/n/623831/" target="_blank">要重新上线?滴滴顺风车整改方向：提升应急处置能力</a><br> ·  <a href="https://news.cnblogs.com/n/623830/" target="_blank">硅谷风投因Uber上市迎集体狂欢：投资回报最高近千倍</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+ if(enablePostBottom()) {
+    codeHighlight();
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverT2();
+    deliverC1();
+    deliverC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);  
+}
+</script>
+</div>
+
+    
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/lightsrs/">蜗牛的古董</a><br>园龄：<a href="https://home.cnblogs.com/u/lightsrs/" title="入园时间：2017-10-16">1年5个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/lightsrs/followers/">3</a><br>关注：<a href="https://home.cnblogs.com/u/lightsrs/followees/">8</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;5890ff97-d730-456e-21f9-08d4ef52ecb6&#39;)">+加关注</a></div><script>getFollowStatus('5890ff97-d730-456e-21f9-08d4ef52ecb6')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2019/03/01&#39;);return false;">&lt;</a></td><td align="center">2019年4月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2019/05/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">31</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td class="CalWeekendDay" align="center">6</td></tr><tr><td class="CalWeekendDay" align="center">7</td><td align="center">8</td><td align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td class="CalWeekendDay" align="center">13</td></tr><tr><td class="CalWeekendDay" align="center">14</td><td class="CalTodayDay" align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td class="CalWeekendDay" align="center">20</td></tr><tr><td class="CalWeekendDay" align="center">21</td><td align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td class="CalWeekendDay" align="center">27</td></tr><tr><td class="CalWeekendDay" align="center">28</td><td align="center">29</td><td align="center">30</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td></tr><tr><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td><td class="CalOtherMonthDay" align="center">9</td><td class="CalOtherMonthDay" align="center">10</td><td class="CalOtherMonthDay" align="center">11</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/lightsrs/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="https://www.cnblogs.com/lightsrs/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="https://www.cnblogs.com/lightsrs/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="https://www.cnblogs.com/lightsrs/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="https://www.cnblogs.com/lightsrs/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/lightsrs/tag/centos7/">centos7</a>(4)</li><li><a href="https://www.cnblogs.com/lightsrs/tag/linux/">linux</a>(3)</li><li><a href="https://www.cnblogs.com/lightsrs/tag/css/">css</a>(2)</li><li><a href="https://www.cnblogs.com/lightsrs/tag/javascript/">javascript</a>(1)</li><li><a href="https://www.cnblogs.com/lightsrs/tag/jQuery/">jQuery</a>(1)</li><li><a href="https://www.cnblogs.com/lightsrs/tag/nginx/">nginx</a>(1)</li><li><a href="https://www.cnblogs.com/lightsrs/tag/SVG/">SVG</a>(1)</li><li><a href="https://www.cnblogs.com/lightsrs/tag/VB/">VB</a>(1)</li><li><a href="https://www.cnblogs.com/lightsrs/tag/xdebug/">xdebug</a>(1)</li><li><a href="https://www.cnblogs.com/lightsrs/tag/bat/">bat</a>(1)</li><li><a href="https://www.cnblogs.com/lightsrs/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="https://www.cnblogs.com/lightsrs/archive/2018/09.html">2018年9月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="https://www.cnblogs.com/lightsrs/archive/2018/01.html">2018年1月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="https://www.cnblogs.com/lightsrs/archive/2017/12.html">2017年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="https://www.cnblogs.com/lightsrs/archive/2017/11.html">2017年11月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="https://www.cnblogs.com/lightsrs/archive/2017/10.html">2017年10月 (2)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap" style="display: none;">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"></div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="https://www.cnblogs.com/lightsrs/p/7899676.html">1. Centos7 PHP的安装和配置(28634)</a></li><li><a href="https://www.cnblogs.com/lightsrs/p/7842299.html">2. 远程连接centos7 上的mysql报（ERROR 2003 (HY000): Can't connect to MySQL server on '168.x.x.x' (10060) ）(7773)</a></li><li><a href="https://www.cnblogs.com/lightsrs/p/7897182.html">3. CentOS7 Apache的安装配置(5019)</a></li><li><a href="https://www.cnblogs.com/lightsrs/p/7836651.html">4. CentOS7 64位下 MySQL5.7的安装与配置（YUM）(1871)</a></li><li><a href="https://www.cnblogs.com/lightsrs/p/7997668.html">5. bat 服务启动脚本(1166)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap" style="display: none;">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap" style="display: none;">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2019 蜗牛的古董
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+
+</body></html>
