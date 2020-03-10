@@ -40,3 +40,15 @@ maven工程首先要识别依赖，web工程实现SSM整合，需要依赖spring
 -A 锁定依赖版本
 -B 添加依赖
 
+
+
+**依赖导入问题**
+
+maven依赖进不去，把dependencyManagement去掉就，会好用，也能继承，可能是3.6以上的
+
+![](D:\note\MAVEN\图片\去dependencyManagement.jpg)
+
+properties   照写即可
+
+![统一管理](D:\note\MAVEN\图片\统一管理.png)
+
