@@ -432,6 +432,8 @@ var vm = new Vue({
 - name的变化会影响到`input`的值
 - input中输入的值，也会导致vm中的name发生改变
 
+**不使用return包裹的数据会在项目的全局可见，会造成变量污染；使用return包裹后数据中变量只在当前组件中生效，不会影响其他组件。**
+
 
 
 ## 4.4.方法
@@ -782,8 +784,13 @@ v-on:事件名="js片段或函数名"
 
 为了解决这个问题，Vue.js 为 `v-on` 提供了**事件修饰符**。修饰符是由点开头的指令后缀来表示的。
 
+![image-20200416223208525](assets\image-20200416223208525.png)
+
 - `.stop` ：阻止事件冒泡到父元素
 - `.prevent`：阻止默认事件发生*
+
+提交失败则阻止默认事件发生
+
 - `.capture`：使用事件捕获模式
 - `.self`：只有元素自身触发事件才执行。（冒泡或捕获的都不执行）
 - `.once`：只执行一次
@@ -1029,6 +1036,8 @@ v-for="(value,key,index) in object"
 ## 5.5.v-if和v-show
 
 ### 5.5.1.基本使用
+
+v-if会移除dom元素，v-show是加个display为none属性
 
 v-if，顾名思义，条件判断。当得到结果为true时，所在的元素才会被渲染。
 
@@ -1433,6 +1442,47 @@ watch可以让我们监控一个值的变化。从而做出相应的反应。
 ![1530030506879](assets/1530030506879.png)
 
 
+
+# $emit 和 $on
+
+emit是消费，on是创建
+
+```
+<html>
+  <head>
+    <title>$emit 和 $on</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <button @click="boost">触发事件</button>
+    </div>
+    <script>
+      new Vue({
+        el: '#root',
+        data() {
+          return {
+            message: 'hello vue'
+          }
+        },
+        created() {
+          this.$on('my_events', this.handleEvents)
+        },
+        methods: {
+          handleEvents(e) {
+            console.log(this.message, e)
+          },
+          boost() {
+            this.$emit('my_events', 'my params')            
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
+```
+
+emit中有异常是不会中断执行的
 
 # 6.组件化
 
